@@ -1,0 +1,181 @@
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Plus Jakarta Sans', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-surface-dark: var(--surface-dark);
+    --color-surface-dark-card: var(--surface-dark-card);
+    --color-surface-dark-border: var(--surface-dark-border);
+    --color-surface-dark-muted: var(--surface-dark-muted);
+    --color-surface-sand: var(--surface-sand);
+    --color-surface-sand-subtle: var(--surface-sand-subtle);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--border, currentColor);
+    }
+}
+
+:root {
+    /* Architectural Stone & Canvas (#F8F7F3) */
+    --background: hsl(40, 18%, 96.5%);
+    --foreground: hsl(30, 8%, 13%);
+    --card: hsl(0, 0%, 100%);
+    --card-foreground: hsl(30, 8%, 13%);
+    --popover: hsl(0, 0%, 100%);
+    --popover-foreground: hsl(30, 8%, 13%);
+
+    /* Architectural Charcoal */
+    --primary: hsl(30, 8%, 12%);
+    --primary-foreground: hsl(40, 20%, 98%);
+    --secondary: hsl(40, 16%, 93%);
+    --secondary-foreground: hsl(30, 8%, 14%);
+    --muted: hsl(40, 12%, 92%);
+    --muted-foreground: hsl(30, 6%, 45%);
+    --accent: hsl(40, 18%, 93%);
+    --accent-foreground: hsl(30, 8%, 12%);
+
+    --destructive: hsl(0, 75%, 55%);
+    --destructive-foreground: hsl(0, 0%, 98%);
+
+    /* Warm Hairline Borders */
+    --border: hsl(38, 12%, 87%);
+    --input: hsl(38, 12%, 87%);
+    --ring: hsl(30, 8%, 15%);
+
+    /* Dark Architectural Surfaces (for Hero & Dark CTA sections) */
+    --surface-dark: hsl(30, 8%, 9%);
+    --surface-dark-card: hsl(30, 8%, 14%);
+    --surface-dark-border: hsl(30, 6%, 22%);
+    --surface-dark-muted: hsl(36, 6%, 62%);
+    --surface-sand: hsl(40, 18%, 96.5%);
+    --surface-sand-subtle: hsl(40, 15%, 92%);
+
+    --radius: 0.625rem;
+
+    --chart-1: hsl(28, 65%, 52%);
+    --chart-2: hsl(160, 40%, 35%);
+    --chart-3: hsl(197, 37%, 24%);
+    --chart-4: hsl(43, 74%, 66%);
+    --chart-5: hsl(27, 87%, 67%);
+
+    --sidebar-background: hsl(40, 18%, 96.5%);
+    --sidebar-foreground: hsl(30, 8%, 25%);
+    --sidebar-primary: hsl(30, 8%, 12%);
+    --sidebar-primary-foreground: hsl(40, 20%, 98%);
+    --sidebar-accent: hsl(40, 16%, 93%);
+    --sidebar-accent-foreground: hsl(30, 8%, 15%);
+    --sidebar-border: hsl(38, 12%, 87%);
+    --sidebar-ring: hsl(30, 8%, 15%);
+}
+
+.dark {
+    --background: hsl(30, 8%, 8%);
+    --foreground: hsl(40, 20%, 97%);
+    --card: hsl(30, 8%, 12%);
+    --card-foreground: hsl(40, 20%, 97%);
+    --popover: hsl(30, 8%, 12%);
+    --popover-foreground: hsl(40, 20%, 97%);
+    --primary: hsl(40, 20%, 98%);
+    --primary-foreground: hsl(30, 8%, 10%);
+    --secondary: hsl(30, 8%, 16%);
+    --secondary-foreground: hsl(40, 20%, 96%);
+    --muted: hsl(30, 8%, 16%);
+    --muted-foreground: hsl(36, 6%, 62%);
+    --accent: hsl(30, 8%, 18%);
+    --accent-foreground: hsl(40, 20%, 98%);
+    --destructive: hsl(0, 75%, 55%);
+    --destructive-foreground: hsl(0, 0%, 98%);
+    --border: hsl(30, 6%, 20%);
+    --input: hsl(30, 6%, 20%);
+    --ring: hsl(40, 20%, 90%);
+
+    --surface-dark: hsl(30, 8%, 7%);
+    --surface-dark-card: hsl(30, 8%, 11%);
+    --surface-dark-border: hsl(30, 6%, 18%);
+    --surface-dark-muted: hsl(36, 6%, 58%);
+    --surface-sand: hsl(30, 8%, 12%);
+    --surface-sand-subtle: hsl(30, 8%, 16%);
+
+    --sidebar-background: hsl(30, 8%, 8%);
+    --sidebar-foreground: hsl(40, 15%, 85%);
+    --sidebar-primary: hsl(40, 20%, 98%);
+    --sidebar-primary-foreground: hsl(30, 8%, 10%);
+    --sidebar-accent: hsl(30, 8%, 16%);
+    --sidebar-accent-foreground: hsl(40, 20%, 95%);
+    --sidebar-border: hsl(30, 6%, 20%);
+    --sidebar-ring: hsl(40, 20%, 90%);
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground antialiased selection:bg-foreground selection:text-background;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+}
