@@ -131,7 +131,7 @@ export function StudioPlanner({ onSelectPlan }: StudioPlannerProps) {
                 </div>
 
                 {/* 6 Selector Cards Grid matching the exact reference image */}
-                <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+                <div className="mt-8 sm:mt-10 grid grid-cols-2 gap-2.5 sm:gap-3 sm:grid-cols-3 lg:grid-cols-6">
                     {planningOptions.map((option) => {
                         const IconComponent = option.icon;
                         const isSelected = selectedId === option.id;
@@ -141,26 +141,26 @@ export function StudioPlanner({ onSelectPlan }: StudioPlannerProps) {
                                 key={option.id}
                                 type="button"
                                 onClick={() => handleSelect(option)}
-                                className={`group flex flex-col justify-between rounded-lg p-5 text-left transition-all duration-200 border ${
+                                className={`group flex flex-col justify-between rounded-lg p-3.5 sm:p-5 text-left transition-all duration-200 border ${
                                     isSelected
                                         ? 'bg-primary text-primary-foreground border-primary shadow-md scale-[1.02]'
                                         : 'bg-card text-foreground border-border hover:border-foreground/30 hover:bg-muted/40'
                                 }`}
                             >
-                                <div className="mb-8">
+                                <div className="mb-4 sm:mb-8">
                                     <IconComponent
-                                        className={`h-5 w-5 transition-transform duration-200 group-hover:scale-110 ${
+                                        className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-200 group-hover:scale-110 ${
                                             isSelected ? 'text-primary-foreground' : 'text-foreground'
                                         }`}
                                     />
                                 </div>
 
                                 <div className="flex items-center justify-between gap-1">
-                                    <span className="text-xs font-semibold tracking-tight">
+                                    <span className="text-[11px] sm:text-xs font-semibold tracking-tight">
                                         {option.title}
                                     </span>
                                     {isSelected && (
-                                        <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
+                                        <ArrowRight className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
                                     )}
                                 </div>
                             </button>
@@ -169,24 +169,24 @@ export function StudioPlanner({ onSelectPlan }: StudioPlannerProps) {
                 </div>
 
                 {/* Interactive Dynamic Guidance Box */}
-                <div className="mt-8 rounded-xl border border-border bg-card p-6 sm:p-8 transition-all duration-300">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 border-b border-border pb-6">
+                <div className="mt-6 sm:mt-8 rounded-xl border border-border bg-card p-5 sm:p-8 transition-all duration-300">
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6 border-b border-border pb-5 sm:pb-6">
                         <div className="max-w-xl">
                             <div className="flex items-center gap-2 text-xs font-semibold tracking-wider text-muted-foreground uppercase">
                                 <span>Tailored Approach</span>
                                 <span>•</span>
                                 <span className="text-foreground">{selectedOption.title}</span>
                             </div>
-                            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                            <p className="mt-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
                                 {selectedOption.tagline}
                             </p>
                         </div>
 
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center w-full sm:w-auto">
                             <button
                                 type="button"
                                 onClick={() => onSelectPlan(selectedOption)}
-                                className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-xs font-medium tracking-wide text-primary-foreground shadow-sm transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
+                                className="group w-full sm:w-auto justify-center inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2.5 text-xs font-medium tracking-wide text-primary-foreground shadow-sm transition-all hover:opacity-90 hover:scale-[1.02] active:scale-[0.98]"
                             >
                                 <span>Start with "{selectedOption.title}"</span>
                                 <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />

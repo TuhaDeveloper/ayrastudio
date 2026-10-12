@@ -40,7 +40,7 @@ export function StudioCta({ onStartProject }: StudioCtaProps) {
                         <button
                             type="button"
                             onClick={onStartProject}
-                            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-xs font-semibold tracking-wide text-foreground shadow-md transition-all duration-200 hover:bg-white/95 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+                            className="group w-full sm:w-auto justify-center inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 sm:py-2.5 text-xs font-semibold tracking-wide text-foreground shadow-md transition-all duration-200 hover:bg-white/95 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
                         >
                             <span>Start a Project</span>
                             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -70,11 +70,11 @@ export function StudioCta({ onStartProject }: StudioCtaProps) {
 
                             {/* Email */}
                             <a
-                                href="mailto:hello@aiyrastudio.com"
+                                href="mailto:hello@ayrastudio.com"
                                 className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
                             >
                                 <Mail className="h-3.5 w-3.5 text-white/60" />
-                                <span>hello@aiyrastudio.com</span>
+                                <span>hello@ayrastudio.com</span>
                             </a>
                         </div>
                     </div>

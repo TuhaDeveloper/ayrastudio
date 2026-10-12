@@ -12,28 +12,13 @@ export function StudioLogo({ className = '', variant = 'auto', compact = false }
 
     return (
         <a href="#hero" className={`group inline-flex items-center gap-3 transition-opacity hover:opacity-90 ${className}`}>
-            {/* Architectural Geometric N Mark */}
-            <div
-                className={`relative flex h-9 w-9 items-center justify-center rounded-sm border transition-colors ${
-                    isLight
-                        ? 'border-white/30 bg-white/10 text-white group-hover:border-white'
-                        : isDark
-                          ? 'border-foreground/20 bg-foreground/5 text-foreground group-hover:border-foreground'
-                          : 'border-current/25 bg-current/5 group-hover:border-current'
-                }`}
-            >
-                <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-5 w-5"
-                >
-                    <path d="M4 20L12 4l8 16" />
-                    <path d="M7.5 14h9" />
-                </svg>
+            {/* Ayra Studio Official Emblem */}
+            <div className="relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                <img
+                    src="/images/studio/ayrastudio.png"
+                    alt="Ayra Studio Symbol"
+                    className="h-full w-full object-contain drop-shadow-sm"
+                />
             </div>
 
             {/* Typography */}
@@ -43,7 +28,7 @@ export function StudioLogo({ className = '', variant = 'auto', compact = false }
                         isLight ? 'text-white' : isDark ? 'text-foreground' : 'text-inherit'
                     }`}
                 >
-                    AIYRA STUDIO
+                    AYRA STUDIO
                 </span>
                 {!compact && (
                     <span

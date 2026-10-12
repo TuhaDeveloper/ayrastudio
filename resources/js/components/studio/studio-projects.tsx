@@ -90,15 +90,15 @@ export function StudioProjects() {
                         </h2>
                     </div>
 
-                    <div className="flex items-center gap-6">
-                        {/* Category Filter Pills */}
-                        <div className="hidden md:flex items-center gap-1 rounded-full border border-border bg-card p-1">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-6">
+                        {/* Category Filter Pills (Mobile Scrollable & Desktop Friendly) */}
+                        <div className="flex items-center gap-1 overflow-x-auto pb-1 max-w-full rounded-full border border-border bg-card p-1">
                             {categories.map((cat) => (
                                 <button
                                     key={cat}
                                     type="button"
                                     onClick={() => setFilter(cat)}
-                                    className={`rounded-full px-3.5 py-1 text-xs font-medium transition-all ${
+                                    className={`shrink-0 rounded-full px-3.5 py-1 text-xs font-medium transition-all ${
                                         filter === cat
                                             ? 'bg-primary text-primary-foreground shadow-xs'
                                             : 'text-muted-foreground hover:text-foreground'
@@ -113,7 +113,7 @@ export function StudioProjects() {
                             href="#projects"
                             className="group inline-flex items-center gap-2 text-xs font-medium text-foreground transition-colors hover:text-muted-foreground"
                         >
-                            <span>View All Projects</span>
+                            <span>View All</span>
                             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                         </a>
                     </div>
@@ -158,8 +158,8 @@ export function StudioProjects() {
 
             {/* Project Details Modal */}
             {selectedProject && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in">
-                    <div className="relative w-full max-w-3xl overflow-hidden rounded-xl border border-border bg-card shadow-2xl animate-in zoom-in-95">
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-sm animate-in fade-in">
+                    <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-xl border border-border bg-card shadow-2xl animate-in zoom-in-95">
                         <button
                             onClick={() => setSelectedProject(null)}
                             type="button"

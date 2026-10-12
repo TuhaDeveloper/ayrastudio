@@ -152,7 +152,7 @@ export function StudioServices({ onSelectService }: StudioServicesProps) {
             {/* Service Details Modal */}
             {activeModalService && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in">
-                    <div className="relative w-full max-w-2xl rounded-xl border border-border bg-card p-6 sm:p-8 shadow-2xl animate-in zoom-in-95">
+                    <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-xl border border-border bg-card p-6 sm:p-8 shadow-2xl animate-in zoom-in-95">
                         <button
                             onClick={() => setActiveModalService(null)}
                             type="button"
@@ -164,7 +164,7 @@ export function StudioServices({ onSelectService }: StudioServicesProps) {
 
                         <div className="flex items-center gap-3">
                             <span className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
-                                AIYRA STUDIO EXPERTISE
+                                AYRA STUDIO EXPERTISE
                             </span>
                         </div>
 

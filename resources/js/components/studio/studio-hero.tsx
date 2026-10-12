@@ -74,7 +74,7 @@ export function StudioHero({ onStartProject }: StudioHeroProps) {
                     </div>
 
                     {/* Main Display Headline */}
-                    <h1 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.12] tracking-[-0.02em] text-white drop-shadow-sm">
+                    <h1 className="font-sans text-3xl sm:text-5xl lg:text-6xl font-normal leading-[1.15] tracking-[-0.02em] text-white drop-shadow-sm">
                         <span className="block font-medium">{activeSlide.headingLine1}</span>
                         <span className="block font-light text-white/95">{activeSlide.headingLine2}</span>
                         <span className="block font-medium">{activeSlide.headingLine3}</span>
@@ -82,16 +82,16 @@ export function StudioHero({ onStartProject }: StudioHeroProps) {
                     </h1>
 
                     {/* Lead Paragraph */}
-                    <p className="mt-6 max-w-xl text-sm sm:text-base leading-relaxed text-white/80 font-normal">
+                    <p className="mt-4 sm:mt-6 max-w-xl text-xs sm:text-base leading-relaxed text-white/80 font-normal">
                         {activeSlide.description}
                     </p>
 
                     {/* Action Buttons */}
-                    <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
+                    <div className="mt-7 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6">
                         <button
                             onClick={onStartProject}
                             type="button"
-                            className="group inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3 text-xs sm:text-sm font-medium tracking-wide text-foreground shadow-lg transition-all duration-200 hover:bg-white/95 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                            className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-white px-7 py-3 text-xs sm:text-sm font-medium tracking-wide text-foreground shadow-lg transition-all duration-200 hover:bg-white/95 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
                         >
                             <span>Start Your Project</span>
                             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -99,7 +99,7 @@ export function StudioHero({ onStartProject }: StudioHeroProps) {
 
                         <a
                             href="#projects"
-                            className="group inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/20 backdrop-blur-xs px-6 py-3 text-xs sm:text-sm font-medium tracking-wide text-white transition-all duration-200 hover:border-white hover:bg-white/10"
+                            className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-black/20 backdrop-blur-xs px-6 py-3 text-xs sm:text-sm font-medium tracking-wide text-white transition-all duration-200 hover:border-white hover:bg-white/10"
                         >
                             <span>Explore Our Work</span>
                         </a>

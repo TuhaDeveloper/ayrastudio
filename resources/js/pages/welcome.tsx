@@ -26,7 +26,7 @@ export default function Welcome() {
 
     return (
         <>
-            <Head title="AIYRA STUDIO — Architecture • Engineering • Design">
+            <Head title="AYRA STUDIO — Architecture • Engineering • Design">
                 <meta
                     name="description"
                     content="End-to-end architectural planning, civil engineering, and 3D visualization solutions. Spaces designed to be lived in. Structures designed to last."

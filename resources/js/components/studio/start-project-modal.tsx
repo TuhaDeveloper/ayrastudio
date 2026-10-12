@@ -38,12 +38,12 @@ export function StartProjectModal({ isOpen, onClose, initialPlan }: StartProject
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in">
-            <div className="relative w-full max-w-xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl animate-in zoom-in-95">
+            <div className="relative w-full max-w-xl max-h-[92vh] overflow-y-auto rounded-2xl border border-border bg-card shadow-2xl animate-in zoom-in-95">
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-border bg-surface-sand p-6">
                     <div>
                         <span className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
-                            AIYRA STUDIO • INQUIRY
+                            AYRA STUDIO • INQUIRY
                         </span>
                         <h3 className="mt-1 text-xl font-semibold text-foreground">
                             Start Your Architectural Project
