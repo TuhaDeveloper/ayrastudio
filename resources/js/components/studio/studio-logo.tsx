@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@inertiajs/react';
 
 interface StudioLogoProps {
     className?: string;
@@ -11,7 +12,7 @@ export function StudioLogo({ className = '', variant = 'auto', compact = false }
     const isDark = variant === 'dark';
 
     return (
-        <a href="#hero" className={`group inline-flex items-center gap-3 transition-opacity hover:opacity-90 ${className}`}>
+        <Link href="/" className={`group inline-flex items-center gap-3 transition-opacity hover:opacity-90 ${className}`}>
             {/* Ayra Studio Official Emblem */}
             <div className="relative flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center transition-transform duration-300 group-hover:scale-105">
                 <img
@@ -40,6 +41,6 @@ export function StudioLogo({ className = '', variant = 'auto', compact = false }
                     </span>
                 )}
             </div>
-        </a>
+        </Link>
     );
 }

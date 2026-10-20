@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, X } from 'lucide-react';
+import { Link } from '@inertiajs/react';
+import { ArrowRight, CheckCircle2, ExternalLink, X } from 'lucide-react';
 
 export interface ServiceItem {
     id: string;
@@ -40,7 +41,7 @@ const servicesData: ServiceItem[] = [
         deliverables: ['Structural Calculation Reports', 'Bar Bending Schedules (BBS)', 'MEP Schematics', 'Load Bearing Proofs'],
     },
     {
-        id: 'design-3d',
+        id: '3d-visualization',
         title: '2D / 3D Design',
         description:
             'Detailed floor plans, elevations, 3D models and realistic visualization.',
@@ -95,11 +96,18 @@ export function StudioServices({ onSelectService }: StudioServicesProps) {
                             and technical solutions.
                         </h2>
                     </div>
-                    <div className="max-w-md lg:pb-1">
-                        <p className="text-sm leading-relaxed text-muted-foreground">
+                    <div className="max-w-md lg:pb-1 flex flex-col items-start lg:items-end gap-3">
+                        <p className="text-sm leading-relaxed text-muted-foreground lg:text-right">
                             From architectural planning to detailed design and visualization, we provide
                             professional services to bring your vision to life.
                         </p>
+                        <Link
+                            href="/services"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-foreground hover:opacity-75 transition-opacity"
+                        >
+                            <span>Explore All Services</span>
+                            <ArrowRight className="h-3.5 w-3.5" />
+                        </Link>
                     </div>
                 </div>
 
@@ -133,15 +141,21 @@ export function StudioServices({ onSelectService }: StudioServicesProps) {
                                 </div>
 
                                 {/* Link CTA */}
-                                <div className="mt-6 pt-2">
+                                <div className="mt-6 pt-2 flex items-center justify-between border-t border-border/40">
                                     <button
                                         type="button"
                                         onClick={() => handleOpenService(service)}
-                                        className="group/link inline-flex items-center gap-1.5 text-xs font-medium text-foreground transition-colors hover:text-foreground/75"
+                                        className="inline-flex items-center gap-1 text-[11px] font-medium text-muted-foreground hover:text-foreground transition-colors"
                                     >
-                                        <span>View Service</span>
-                                        <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover/link:translate-x-1" />
+                                        <span>Quick View</span>
                                     </button>
+                                    <Link
+                                        href={`/services/${service.id}`}
+                                        className="group/link inline-flex items-center gap-1 text-xs font-semibold text-foreground transition-colors hover:text-foreground/75"
+                                    >
+                                        <span>Full Details</span>
+                                        <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover/link:translate-x-1" />
+                                    </Link>
                                 </div>
                             </div>
                         </div>

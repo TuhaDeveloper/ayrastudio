@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from '@inertiajs/react';
 import { ArrowRight, Eye, MapPin, Maximize2, X } from 'lucide-react';
 
 export interface ProjectItem {
@@ -109,13 +110,13 @@ export function StudioProjects() {
                             ))}
                         </div>
 
-                        <a
-                            href="#projects"
+                        <Link
+                            href="/gallery"
                             className="group inline-flex items-center gap-2 text-xs font-medium text-foreground transition-colors hover:text-muted-foreground"
                         >
-                            <span>View All</span>
+                            <span>Explore Full Gallery</span>
                             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-                        </a>
+                        </Link>
                     </div>
                 </div>
 

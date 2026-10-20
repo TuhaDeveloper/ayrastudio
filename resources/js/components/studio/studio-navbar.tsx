@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, usePage } from '@inertiajs/react';
 import { StudioLogo } from './studio-logo';
 import { ArrowRight, Mail, MapPin, Menu, Phone, X } from 'lucide-react';
 
@@ -7,6 +8,7 @@ interface StudioNavbarProps {
 }
 
 export function StudioNavbar({ onStartProject }: StudioNavbarProps) {
+    const { url } = usePage();
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('Home');
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,44 +25,70 @@ export function StudioNavbar({ onStartProject }: StudioNavbarProps) {
         };
     }, [mobileMenuOpen]);
 
+    const isHome = url === '/' || url.startsWith('/#');
+    const isServices = url.startsWith('/services');
+    const isGallery = url.startsWith('/gallery') || url.startsWith('/projects');
+    const isAbout = url.startsWith('/about');
+    const isContact = url.startsWith('/contact');
+
     useEffect(() => {
+        if (!isHome) {
+            if (isServices) setActiveSection('Services');
+            else if (isGallery) setActiveSection('Gallery');
+            else if (isAbout) setActiveSection('About');
+            else if (isContact) setActiveSection('Contact');
+        }
+
         const handleScroll = () => {
-            setScrolled(window.scrollY > 30);
+            setScrolled(window.scrollY > 15);
 
-            const sections = [
-                { id: 'hero', name: 'Home' },
-                { id: 'services', name: 'Services' },
-                { id: 'projects', name: 'Projects' },
-                { id: 'planner', name: 'How We Work' },
-                { id: 'how-we-work', name: 'How We Work' },
-                { id: 'about', name: 'About' },
-            ];
+            if (isHome) {
+                const sections = [
+                    { id: 'hero', name: 'Home' },
+                    { id: 'services', name: 'Services' },
+                    { id: 'projects', name: 'Gallery' },
+                    { id: 'planner', name: 'How We Work' },
+                    { id: 'how-we-work', name: 'How We Work' },
+                    { id: 'about', name: 'About' },
+                ];
 
-            const scrollPos = window.scrollY + 180;
-            for (const s of sections) {
-                const el = document.getElementById(s.id);
-                if (el) {
-                    const top = el.offsetTop;
-                    const height = el.offsetHeight;
-                    if (scrollPos >= top && scrollPos < top + height) {
-                        setActiveSection(s.name);
-                        break;
+                const scrollPos = window.scrollY + 180;
+                for (const s of sections) {
+                    const el = document.getElementById(s.id);
+                    if (el) {
+                        const top = el.offsetTop;
+                        const height = el.offsetHeight;
+                        if (scrollPos >= top && scrollPos < top + height) {
+                            setActiveSection(s.name);
+                            break;
+                        }
                     }
                 }
             }
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [url, isHome, isServices, isGallery, isAbout, isContact]);
 
     const navItems = [
-        { number: '01', label: 'Home', href: '#hero' },
-        { number: '02', label: 'Services', href: '#services' },
-        { number: '03', label: 'Projects', href: '#projects' },
-        { number: '04', label: 'How We Work', href: '#how-we-work' },
-        { number: '05', label: 'About', href: '#about' },
+        { number: '01', label: 'Home', href: '/' },
+        { number: '02', label: 'Services', href: '/services' },
+        { number: '03', label: 'Gallery', href: '/gallery' },
+        { number: '04', label: 'How We Work', href: '/#how-we-work' },
+        { number: '05', label: 'About', href: '/about' },
+        { number: '06', label: 'Contact', href: '/contact' },
     ];
+
+    const isItemActive = (item: { label: string; href: string }) => {
+        if (item.label === 'Services') return isServices;
+        if (item.label === 'Gallery') return isGallery;
+        if (item.label === 'About') return isAbout;
+        if (item.label === 'Contact') return isContact;
+        if (isHome) return activeSection === item.label;
+        return false;
+    };
 
     const handleNavClick = (label: string) => {
         setActiveSection(label);
@@ -72,8 +100,10 @@ export function StudioNavbar({ onStartProject }: StudioNavbarProps) {
             <header
                 className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
                     scrolled
-                        ? 'bg-surface-dark/90 backdrop-blur-md border-b border-surface-dark-border py-3.5 shadow-lg'
-                        : 'bg-gradient-to-b from-black/70 via-black/30 to-transparent py-4 sm:py-6'
+                        ? 'bg-[#141210]/95 backdrop-blur-md border-b border-surface-dark-border py-3.5 shadow-xl'
+                        : isHome
+                          ? 'bg-gradient-to-b from-black/80 via-black/40 to-transparent py-4 sm:py-6'
+                          : 'bg-[#141210]/90 backdrop-blur-md border-b border-surface-dark-border/60 py-3.5 sm:py-4 shadow-sm'
                 }`}
             >
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-12">
@@ -83,9 +113,9 @@ export function StudioNavbar({ onStartProject }: StudioNavbarProps) {
                     {/* Desktop Navigation Links */}
                     <nav className="hidden items-center gap-8 lg:gap-10 md:flex">
                         {navItems.map((item) => {
-                            const isActive = activeSection === item.label;
+                            const isActive = isItemActive(item);
                             return (
-                                <a
+                                <Link
                                     key={item.label}
                                     href={item.href}
                                     onClick={() => setActiveSection(item.label)}
@@ -97,7 +127,7 @@ export function StudioNavbar({ onStartProject }: StudioNavbarProps) {
                                     {isActive && (
                                         <span className="absolute -bottom-1.5 left-0 right-0 h-[2px] bg-white rounded-full transition-all duration-300" />
                                     )}
-                                </a>
+                                </Link>
                             );
                         })}
                     </nav>
@@ -146,9 +176,9 @@ export function StudioNavbar({ onStartProject }: StudioNavbarProps) {
                     {/* Middle: Large Elegant Navigation Links */}
                     <nav className="flex flex-col gap-6 py-8 my-auto">
                         {navItems.map((item) => {
-                            const isActive = activeSection === item.label;
+                            const isActive = isItemActive(item);
                             return (
-                                <a
+                                <Link
                                     key={item.label}
                                     href={item.href}
                                     onClick={() => handleNavClick(item.label)}
@@ -171,7 +201,7 @@ export function StudioNavbar({ onStartProject }: StudioNavbarProps) {
                                             isActive ? 'text-white opacity-100' : 'text-white/40 opacity-0 group-hover:opacity-100'
                                         }`}
                                     />
-                                </a>
+                                </Link>
                             );
                         })}
                     </nav>
